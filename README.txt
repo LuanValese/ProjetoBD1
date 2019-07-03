@@ -1,6 +1,10 @@
 # ProjetoBD1
 Repositorio Projeto Banco de dados 1 
 
+O Sipem é um sistema de informação para escolas de musica que tem as seguintes funcioanlidades:
+*Cadastrar cursos com seus respectivos preços em uma tabela para controle da escola, editá-los e remove-los conforme a necessidade.
+*Cadastrar alunos com suas informações e matricular cada aluno em N cursos disponíveis na tabela de cursos, sendo possivel o CRUD dos alunos e das matrículas de cada aluno.
+
 Para utilizar o sistema siga os seguintes passos:
  
 1:  Faça o download do software XAMPP pelo link: https://www.apachefriends.org/pt_br/download.html e instale em sua máquina;
