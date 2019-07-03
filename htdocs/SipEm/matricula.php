@@ -91,7 +91,7 @@ include_once("buscaMatricula.php");
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            A matrícula será removido definitivamente!
+                                            A matrícula será removida definitivamente!
                                             Deseja continuar?
                                         </div>
                                         <div class="modal-footer">
