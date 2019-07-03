@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Jun-2019 às 17:20
+-- Tempo de geração: 03-Jul-2019 às 16:30
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.1.30
 
@@ -33,7 +33,7 @@ CREATE TABLE `alunos` (
   `cpf` varchar(12) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `telefone` varchar(20) NOT NULL,
-  `mensalidade` decimal(10,2) NOT NULL
+  `mensalidade` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -41,14 +41,12 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`id`, `cpf`, `nome`, `telefone`, `mensalidade`) VALUES
-(46, '46948498833', 'Luan Henrique de Castro Valese', '44991140744', '200.00'),
-(47, '06044254810', 'Vinicius OtÃ¡vio Rafael Monteiro', '4898645527', '110.00'),
-(48, '02179932812', 'Eduarda Olivia Brenda da Mota', '11985743500', '210.00'),
-(49, '53700146809', 'Yasmin Vanessa Emilly Drumond', '45984073161', '110.00'),
-(50, '46948498833', 'JoÃ£o Gustavo Thiago Souza', '11984058266', '90.00'),
-(51, '39170652821', 'AlÃ­cia Rafaela Corte Real', '17995227777', '125.00'),
-(52, '1087203731', 'Ian Bento Erick Rocha', '41994325053', '110.00'),
-(53, '03247597891', 'Josefa Aline Lara Brito', '11987180756', '110.00');
+(58, '47958468355', 'Vinicius OtÃ¡vio Rafael Monteiro', '44996640755', NULL),
+(59, '36854574169', 'Rafael da Silva', '14999865762', '90.00'),
+(60, '56748496512', 'Alice Freitas Melo', '44991160058', '100.00'),
+(61, '46658716644', 'Fernanda Monteiro da Silva', '17996580047', '110.00'),
+(62, '28947556411', 'JosÃ© Azevedo Maia', '47995488754', '215.00'),
+(63, '24983154699', 'Lorena Vieira dos Santos', '45998654552', '200.00');
 
 -- --------------------------------------------------------
 
@@ -58,27 +56,48 @@ INSERT INTO `alunos` (`id`, `cpf`, `nome`, `telefone`, `mensalidade`) VALUES
 
 CREATE TABLE `matricula` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `CPF` varchar(12) CHARACTER SET utf8 NOT NULL,
-  `modalidade` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `mensalidade` decimal(10,2) NOT NULL
+  `curso` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `cpf` varchar(12) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `matricula`
 --
 
-INSERT INTO `matricula` (`id`, `nome`, `CPF`, `modalidade`, `mensalidade`) VALUES
-(8, 'Luan Henrique de Castro Valese', '46948498833', 'tÃ©cnica vocal', '110.00'),
-(9, 'Luan Henrique de Castro Valese', '46948498833', 'violÃ£o', '90.00'),
-(10, 'Vinicius OtÃ¡vio Rafael Monteiro', '06044254810', 'guitarra', '110.00'),
-(11, 'Eduarda Olivia Brenda da Mota', '02179932812', 'teclado', '100.00'),
-(12, 'Eduarda Olivia Brenda da Mota', '46948498833', 'baixo', '110.00'),
-(13, 'Yasmin Vanessa Emilly Drumond', '53700146809', 'bateria', '110.00'),
-(14, 'JoÃ£o Gustavo Thiago Souza', '46476217828', 'violÃ£o', '90.00'),
-(15, 'AlÃ­cia Rafaela Corte Real', '39170652821', 'piano', '125.00'),
-(16, 'Ian Bento Erick Rocha', '1087203731', 'guitarra', '110.00'),
-(17, 'Josefa Aline Lara Brito', '03247597891', 'tÃ©cnica vocal', '110.00');
+INSERT INTO `matricula` (`id`, `curso`, `preco`, `cpf`) VALUES
+(75, 'guitarra', '100.00', '24983154699'),
+(76, 'bateria', '100.00', '24983154699'),
+(77, 'piano', '115.00', '28947556411'),
+(78, 'tÃ©cnica vocal', '110.00', '46658716644'),
+(79, 'baixo', '100.00', '56748496512'),
+(80, 'violÃ£o', '90.00', '36854574169'),
+(81, 'guitarra', '100.00', '28947556411');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `modalidade`
+--
+
+CREATE TABLE `modalidade` (
+  `id` int(11) NOT NULL,
+  `curso` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `precoatual` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `modalidade`
+--
+
+INSERT INTO `modalidade` (`id`, `curso`, `precoatual`) VALUES
+(10, 'guitarra', '100.00'),
+(11, 'bateria', '100.00'),
+(12, 'tÃ©cnica vocal', '110.00'),
+(13, 'piano', '115.00'),
+(14, 'violÃ£o', '90.00'),
+(15, 'baixo', '100.00'),
+(16, 'teclado', '100.00');
 
 --
 -- Índices para tabelas despejadas
@@ -97,6 +116,12 @@ ALTER TABLE `matricula`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `modalidade`
+--
+ALTER TABLE `modalidade`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -104,13 +129,19 @@ ALTER TABLE `matricula`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de tabela `matricula`
 --
 ALTER TABLE `matricula`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT de tabela `modalidade`
+--
+ALTER TABLE `modalidade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
