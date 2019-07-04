@@ -34,11 +34,11 @@ include_once("buscaM.php");
                 <input type="hidden" name="id" value="<?php echo $id ?>">
                 <div class="form-group">
                     <label for="curso">Curso</label>
-                    <input name= "curso" id="curso" type="text" class="form-control" value="<?php echo $curso?>">
+                    <input name= "curso" id="curso" type="text" style="width:40%;" class="form-control" value="<?php echo $curso?>">
                 </div>
                 <div class="form-group">
                     <label for="precoatual">Preço atual</label>
-                    <input name="precoatual" id="precoatual" type="text" class="form-control" value="<?php echo $precoatual?>">
+                    <input name="precoatual" id="precoatual" type="text" style="width:30%;" class="form-control" value="<?php echo $precoatual?>">
                 </div>
                 <button type="submit" class="btn btn-info">ATUALIZAR</button>
             </form>
