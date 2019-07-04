@@ -35,11 +35,11 @@ include_once("buscaMatricula.php");
                 <input type="hidden" name="cpf" value="<?php echo $cpf ?>">
                 <div class="form-group">
                     <label for="curso">Curso</label>
-                    <input name= "curso" id="curso" type="text" class="form-control" value="<?php echo $curso?>">
+                    <input name= "curso" id="curso" type="text" style="width:40%;" class="form-control" value="<?php echo $curso?>">
                 </div>
                         <div class="form-group">
                             <label for="preco">Valor</label>
-                            <input name="preco" id="preco" type="text" class="form-control" value="<?php echo $preco?>">
+                            <input name="preco" id="preco" type="text" style="width:30%;" class="form-control" value="<?php echo $preco?>">
                         </div>
                 <button type="submit" class="btn btn-info">ATUALIZAR</button>
             </form>
